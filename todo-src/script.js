@@ -2,14 +2,25 @@
 
 var myApp = angular.module('app', []);
 
+
+
 myApp.controller('MainCtrl', function ($scope){
   $scope.todos = ["Learn Angular", "Learn node"];
+  $scope.priorities = ["Tomorrow", "Wednesday"];
+  $scope.newPriority = "";
   $scope.newItem = "";
   
+
+
   $scope.addItem = function(){
-    console.log("in add");
     if ($scope.newItem !== ""){
       $scope.todos.push($scope.newItem);
+      if ($scope.newPriority && $scope.newPriority !== ""){
+        $scope.priorities.push($scope.newPriority);
+      } else {
+        $scope.priorities.push("");
+      }
+      $scope.newPriority = "";
       $scope.newItem = "";
     }
   }
@@ -18,9 +29,22 @@ myApp.controller('MainCtrl', function ($scope){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
     $scope.todos.splice(index, 1);
+    $scope.priorities.splice(index, 1);
   }
-    
-  
+    $scope.getPriority = function(item){
+    var index = $scope.todos.indexOf(item);
+    return $scope.priorities[index];
+  }
+
+   $scope.saveItem = function(item, savedItem, savedDate){
+    var index = $scope.todos.indexOf(item);
+    if (savedItem && savedItem != ""){
+      $scope.todos[index] = savedItem;
+    }
+    if (savedDate && savedDate != "") {
+      $scope.priorities[index] = savedDate;
+    }
+  }
 });
 
 /*************************

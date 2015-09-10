@@ -2,3 +2,7 @@
 body {
   background: blue;
 }
+
+.input-group .form-control {
+		width: 50%;
+}
