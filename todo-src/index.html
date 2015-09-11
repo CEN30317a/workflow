@@ -33,7 +33,6 @@
         <li class="list-group-item clearfix" ng-repeat="do in todos">
           <span>{{do}}<br></span>
           <span><b>Priority:</b> {{getPriority(do)}}</span>
-          <input type="text" class="form-control" ng-model="savedDate" placeholder = {{getDate(do)}}>
           <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
             <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
           </button>
