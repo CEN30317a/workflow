@@ -11,6 +11,7 @@ myApp.controller('MainCtrl', function ($scope){
   $scope.newPriority = "";
   $scope.newItem = "";
   $scope.total = 2;
+  $scope.selectedItem =""
 
   $scope.addItem = function(){
     if ($scope.newItem !== ""){
@@ -46,7 +47,7 @@ myApp.controller('MainCtrl', function ($scope){
     $scope.completed.splice(index, 1);
     $scope.total -= 1;
   }
-  
+
   $scope.getPriority = function(item){
     var index = $scope.todos.indexOf(item);
     return $scope.priorities[index];
@@ -59,6 +60,29 @@ myApp.controller('MainCtrl', function ($scope){
     } else {
       return "btn-default";
     }
+  }
+
+  $scope.setEditItem = function(selected) {
+      $scope.selectedItem = selected;
+  }
+
+  $scope.changeItem = function(toEdit){
+    console.log("in edit");
+    if (toEdit !== ""){
+      var index = $scope.todos.indexOf($scope.selectedItem);
+      $scope.todos[index] = toEdit;
+
+
+      //$scope.todos.push(toEdit);
+      //$scope.newItem = "";
+      //$scope.total += 1;
+    }
+  }
+
+
+  $scope.editItem = function(newItem, deleteItem) {
+    //change item
+    $scope.changeItem(newItem);
   }
 
   $scope.toggleDone = function(item){
