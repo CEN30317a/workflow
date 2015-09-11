@@ -6,3 +6,7 @@ body {
 .input-group .form-control {
 		width: 50%;
 }
+
+.btn-spacing {
+  margin-right: 10px;
+}

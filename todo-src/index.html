@@ -3,8 +3,13 @@
 
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+
+    </script>>
+
+    </script>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
   </head>
@@ -31,6 +36,7 @@
       <ul class="list-group">
         <!-- http://www.w3schools.com/css/css_float.asp -->
         <li class="list-group-item clearfix" ng-repeat="do in todos">
+
           <span>{{do}}<br></span>
           <span><b>Priority:</b> {{getPriority(do)}}</span>
           <button class="btn btn-danger pull-right" type="button" ng-click="deleteItem(do)">
@@ -41,8 +47,36 @@
             <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
           </button>
 
+          <!--Edit Btn-->
+          <button class="btn btn-info pull-right btn-spacing" type="button"  data-toggle="modal" data-target="#myModal" ng-click="setEditItem(do)">
+            <span class="glyphicon glyphicon-edit " aria-hidden="true"></span>
+          </button>
+
+
         </li>
       </ul>
+
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Edit Message</h4>
+            </div>
+            <div class="modal-body">
+              <textarea ng-model="editedMessage"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="editItem(editedMessage,selectedItem)">Edit</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
   </body>
