@@ -33,6 +33,7 @@ myApp.controller('MainCtrl', function ($scope){
         $scope.priorities.splice(i, 1);
         $scope.completed.splice(i, 1);
         $scope.total -= 1;
+        --i;
       }
     }
   }
