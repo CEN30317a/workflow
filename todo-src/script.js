@@ -4,6 +4,7 @@ var myApp = angular.module('app', []);
 
 myApp.controller('MainCtrl', function ($scope){
   $scope.todos = ["Learn Angular", "Learn node"];
+  $scope.completed = [false, false];
   $scope.newItem = "";
   $scope.total = 2;
 
@@ -22,6 +23,20 @@ myApp.controller('MainCtrl', function ($scope){
     var index = $scope.todos.indexOf(item);
     $scope.todos.splice(index, 1);
     $scope.total -= 1;
+  }
+
+    $scope.isComplete = function(item){
+    var index = $scope.todos.indexOf(item);
+    if ($scope.completed[index]) {
+      return "btn-success";
+    } else {
+      return "btn-default";
+    }
+
+    $scope.toggleDone = function(item){
+    var index = $scope.todos.indexOf(item);
+    $scope.completed[index] = !$scope.completed[index];
+  }
   }
 
 
