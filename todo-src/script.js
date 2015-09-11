@@ -26,6 +26,17 @@ myApp.controller('MainCtrl', function ($scope){
     }
   }
 
+  $scope.deleteCompleted = function(){
+    for (var i = 0; i < $scope.todos.length; ++i) {
+      if ($scope.completed[i] == true) {
+        $scope.todos.splice(i, 1);
+        $scope.priorities.splice(i, 1);
+        $scope.completed.splice(i, 1);
+        $scope.total -= 1;
+      }
+    }
+  }
+
   $scope.deleteItem = function(item){
     console.log("in delete");
     var index = $scope.todos.indexOf(item);
